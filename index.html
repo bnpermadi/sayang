@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise Untukmu</title>
+    <style>
+        body, html {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+            transition: background 1s ease;
+        }
+        .container {
+            text-align: center;
+            max-width: 600px;
+            padding: 20px;
+            color: #fff;
+            position: relative;
+            z-index: 1;
+        }
+        .page {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0;
+            animation: fadeIn 1.5s forwards;
+        }
+        .page.active {
+            display: flex;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin: 20px 0;
+            animation: bounceIn 1s;
+        }
+        p {
+            font-size: 1.2em;
+            margin: 20px 0;
+            animation: slideIn 1s;
+        }
+        .btn {
+            background-color: #ffffff;
+            color: #ff5e99;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: transform 0.3s, background 0.3s, color 0.3s;
+            margin-top: 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .btn:hover {
+            transform: scale(1.1);
+            background-color: #ff5e99;
+            color: #ffffff;
+        }
+        .rose-image {
+            width: 150px;
+            margin: 20px 0;
+            border-radius: 50%;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        /* Warna background gradien untuk setiap halaman */
+        .page1 { background: linear-gradient(to right, #ff758c, #ff7eb3); }
+        .page2 { background: linear-gradient(to right, #a1c4fd, #c2e9fb); }
+        .page3 { background: linear-gradient(to right, #fad0c4, #ffd1ff); }
+        .page4 { background: linear-gradient(to right, #84fab0, #8fd3f4); }
+        .page5 { background: linear-gradient(to right, #ff9a9e, #fad0c4); }
+        .finalMessage { background: linear-gradient(to right, #fbc2eb, #a6c1ee); }
+
+        /* Animasi */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes bounceIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); }
+        }
+        @keyframes slideIn {
+            from { transform: translateX(-50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body class="page1" style="background-image: url('asri.jpeg');">
+
+    <!-- Audio Background -->
+    <audio autoplay loop>
+        <source src="jaz.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="container">
+
+        <!-- Page 1 -->
+        <div id="page1" class="page active">
+            <img src="https://img.icons8.com/ios/150/FFB6C1/rose.png" alt="Rose" class="rose-image">
+            <h1>Hai, Dek Tariii</h1>
+            <p>Mas punya sesuatu yang spesial untukmu. Yuk, ikuti perjalanan ini!</p>
+            <button class="btn" onclick="nextPage(2)">Mulai</button>
+        </div>
+
+        <!-- Page 2 -->
+        <div id="page2" class="page">
+            <img src="https://img.icons8.com/ios/150/FFB6C1/rose.png" alt="Rose" class="rose-image">
+            <h1>Indah</h1>
+            <p>Saat pertama mas melihat dek tari. Mas tidak menyangka bahwa perasaan ini bisa tumbuh begitu besar.</p>
+            <button class="btn" onclick="nextPage(3)">Lanjut</button>
+        </div>
+
+        <!-- Page 3 -->
+        <div id="page3" class="page">
+            <img src="https://img.icons8.com/ios/150/FFB6C1/rose.png" alt="Rose" class="rose-image">
+            <h1>Kamu</h1>
+            <p>Setiap momen melihatmu membuat hariku selalu bahagia. Dek Tari membuat segalanya jadi lebih indah.</p>
+            <button class="btn" onclick="nextPage(4)">Lanjut</button>
+        </div>
+
+        <!-- Page 4 -->
+        <div id="page4" class="page">
+            <img src="https://img.icons8.com/ios/150/FFB6C1/rose.png" alt="Rose" class="rose-image">
+            <h1>Perasaan Ini</h1>
+            <p>Mas ingin kamu tahu bahwa dek Tari sangat berarti bagiku. Hatiku selalu berdegup saat memandang wajahmu.</p>
+            <button class="btn" onclick="nextPage(5)">Lanjut</button>
+        </div>
+
+        <!-- Page 5 -->
+        <div id="page5" class="page">
+            <img src="https://img.icons8.com/ios/150/FFB6C1/rose.png" alt="Rose" class="rose-image">
+            <h1>Dan Sekarang...</h1>
+            <p>Mas ingin tahu, apakah dek Tari mau menjadi bagian dari hidupku?</p>
+            <button class="btn" onclick="showFinalMessage()">Jawabannya...</button>
+        </div>
+
+        <!-- Final Page -->
+        <div id="finalMessage" class="page finalMessage">
+            <img src="https://img.icons8.com/ios/150/FFB6C1/rose.png" alt="Rose" class="rose-image">
+            <h1>Terima Kasih</h1>
+            <p>Terima kasih telah menjadi seseorang yang spesial dalam hidupku. Mas harap kita bisa terus bersama selamanya.</p>
+            <p><strong>Apakah kamu mau?</strong></p>
+            <button class="btn" onclick="accept()">Ya, aku mau!</button>
+        </div>
+
+    </div>
+
+    <script>
+        function nextPage(pageNumber) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById('page' + pageNumber).classList.add('active');
+            document.body.className = 'page' + pageNumber;
+        }
+
+        function showFinalMessage() {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById('finalMessage').classList.add('active');
+            document.body.className = 'finalMessage';
+        }
+
+        function accept() {
+            alert("Terima kasih sudah menerima perasaanku!");
+        }
+    </script>
+</body>
+</html>
